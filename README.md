@@ -2,17 +2,13 @@ mop: Mobility Oriented-Parity Metric
 ================
 Marlon E. Cobos, Hannah L. Owens, Jorge Soberón, A. Townsend Peterson
 
-- <a href="#installation" id="toc-installation">Installation</a>
-  - <a href="#install-development-version"
-    id="toc-install-development-version">Install development version</a>
-  - <a href="#install-stable-version-from-cran"
-    id="toc-install-stable-version-from-cran">Install stable version from
-    CRAN</a>
-- <a href="#example" id="toc-example">Example</a>
-  - <a href="#running-analyses" id="toc-running-analyses">Running
-    analyses</a>
-  - <a href="#plotting-results" id="toc-plotting-results">Plotting
-    results</a>
+- [Installation](#installation)
+  - [Install stable version from
+    CRAN](#install-stable-version-from-cran)
+  - [Install development version](#install-development-version)
+- [Example](#example)
+  - [Running analyses](#running-analyses)
+  - [Plotting results](#plotting-results)
 
 <!-- badges: start -->
 
@@ -37,12 +33,23 @@ al. (2013)](https://doi.org/10.1016/j.ecolmodel.2013.04.011).
 
 ## Installation
 
+### Install stable version from CRAN
+
+To install the stable version of `mop` use:
+
+``` r
+install.packages("mop")
+```
+
+<br>
+
 ### Install development version
 
-Before installing `mop`, make sure to obtain the compilation tools
-required: [Rtools](https://cran.r-project.org/bin/windows/Rtools/) for
-Windows, [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-for Mac, and `ggc` or similar compilers in Linux, see examples
+Before installing the development version of `mop`, make sure to obtain
+the compilation tools required:
+[Rtools](https://cran.r-project.org/bin/windows/Rtools/) for Windows,
+[Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12) for Mac,
+and `ggc` or similar compilers in Linux, see examples
 [here](https://gcc.gnu.org/install/) or
 [here](https://www.makeuseof.com/how-to-install-c-compiler-linux/).
 
@@ -53,12 +60,6 @@ After that, you can install the development version of `mop` from its
 # install.packages("remotes")
 remotes::install_github("marlonecobos/mop")
 ```
-
-<br>
-
-### Install stable version from CRAN
-
-Coming soon…
 
 <br>
 
@@ -120,11 +121,16 @@ summary(mop_basic_res)
 #> ---------------------------------------------------------------------------
 #> 
 #> MOP summary:
-#> Variables
-#> bio5, bio6, bio7, bio13, bio14, bio15 
+#> Values
+#>       type scale center calculate_distance  distance percentage
+#> 1 detailed  TRUE   TRUE               TRUE euclidean          1
+#>   rescale_distance fix_NA N_m N_g
+#> 1            FALSE   TRUE 723 723
 #> 
-#>   calculate_distance  distance percentage     type fix_NA N_m N_g
-#> 1               TRUE euclidean          1 detailed   TRUE 723 723
+#> Reference conditions
+#>           bio5       bio6      bio7     bio13     bio14     bio15
+#> min -3.1625758 -2.8057083 -3.609429 -2.002072 -1.170877 -1.027498
+#> max  0.6507328  0.8513394  3.710556  2.779598  2.351446  3.174031
 #> 
 #> 
 #> Distances:
