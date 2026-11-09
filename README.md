@@ -13,8 +13,11 @@ Marlon E. Cobos, Hannah L. Owens, Jorge Soberón, A. Townsend Peterson
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/marlonecobos/mop/workflows/R-CMD-check/badge.svg)](https://github.com/marlonecobos/mop/actions)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/mop)](https://CRAN.R-project.org/package=mop)
+[![downloads](https://cranlogs.r-pkg.org/badges/grand-total/mop)](https://cranlogs.r-pkg.org:443/badges/grand-total/mop)
+[![License](https://img.shields.io/badge/license-GPL%20(%3E=%203)-lightgrey.svg?style=flat)](http://www.gnu.org/licenses/gpl-3.0.html)
+[![R-CMD-check](https://github.com/marlonecobos/mop/workflows/R-CMD-check/badge.svg)](https://github.com/marlonecobos/mop/actions/workflows/check-standard.yaml)
 <!-- badges: end -->
 
 <hr>
@@ -44,7 +47,7 @@ Biogeography 17: e132916. <https://doi.org/10.21425/fob.17.132916>
 
 <br>
 
-*Big thanks to code contributor:* Dave Slager.
+*Big thanks to code contributors:* Dave Slager, Henrik Bengtsson.
 
 <br>
 
@@ -125,9 +128,9 @@ via arguments of this function.
 
 ``` r
 # analysis
-mop_basic_res <- mop(m = reference_layers, g = layers_of_interest, 
-                     type = "detailed", calculate_distance = TRUE, 
-                     where_distance = "all", distance = "euclidean", 
+mop_basic_res <- mop(m = reference_layers, g = layers_of_interest,
+                     type = "detailed", calculate_distance = TRUE,
+                     where_distance = "all", distance = "euclidean",
                      scale = TRUE, center = TRUE)
 #>   |                                                                              |                                                                      |   0%  |                                                                              |===================================                                   |  50%  |                                                                              |======================================================================| 100%
 
@@ -156,7 +159,7 @@ summary(mop_basic_res)
 #> 
 #> 
 #> Non-analogous conditions (NAC):
-#> Percentage = 0.566% of all conditions
+#> Percentage = 56.57% of all conditions
 #> Variables with NAC in 'simple' = 2
 #> 
 #> 
@@ -165,107 +168,111 @@ summary(mop_basic_res)
 # print results
 mop_basic_res
 #> MOP distances:
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 39, 36, 1  (nrow, ncol, nlyr)
 #> resolution  : 0.1666667, 0.1666667  (x, y)
 #> extent      : -81.16667, -75.16667, -5, 1.5  (xmin, xmax, ymin, ymax)
-#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization) 
+#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization)
 #> source(s)   : memory
-#> varname     : layers_of_interest 
-#> name        :       mop 
-#> min value   : 0.3003245 
-#> max value   : 2.1788036 
+#> varname     : layers_of_interest
+#> name        :      mop
+#> min value   : 0.300325
+#> max value   : 2.178804
 #> 
 #> MOP basic:
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 39, 36, 1  (nrow, ncol, nlyr)
 #> resolution  : 0.1666667, 0.1666667  (x, y)
 #> extent      : -81.16667, -75.16667, -5, 1.5  (xmin, xmax, ymin, ymax)
-#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization) 
+#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization)
 #> source(s)   : memory
-#> varname     : layers_of_interest 
-#> name        : mop 
-#> min value   :   1 
-#> max value   :   1 
+#> varname     : layers_of_interest
+#> name        : mop
+#> min value   :   1
+#> max value   :   1
 #> 
 #> MOP simple:
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 39, 36, 1  (nrow, ncol, nlyr)
 #> resolution  : 0.1666667, 0.1666667  (x, y)
 #> extent      : -81.16667, -75.16667, -5, 1.5  (xmin, xmax, ymin, ymax)
-#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization) 
+#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization)
 #> source(s)   : memory
-#> varname     : layers_of_interest 
-#> categories  : category 
-#> name        : category 
-#> min value   :        1 
-#> max value   :        2 
+#> varname     : layers_of_interest
+#> categories  : category
+#> name        : category
+#> min value   :        1
+#> max value   :        2
 #> 
 #> MOP detailed:
 #> interpretation_combined:
 #>   values extrapolation_variables
-#> 1  1e+01                    bio5
-#> 2  1e+02                    bio6
-#> 3  1e+03                    bio7
-#> 4  1e+04                   bio13
-#> 5  1e+05                   bio14
-#> 6  1e+06                   bio15
+#> 1      2                    bio5
+#> 2      4                    bio6
+#> 3      8                    bio7
+#> 4     16                   bio13
+#> 5     32                   bio14
+#> 6     64                   bio15
 #> ...
 #> 
 #> towards_low_end:
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 39, 36, 6  (nrow, ncol, nlyr)
 #> resolution  : 0.1666667, 0.1666667  (x, y)
 #> extent      : -81.16667, -75.16667, -5, 1.5  (xmin, xmax, ymin, ymax)
-#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization) 
+#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization)
 #> source(s)   : memory
-#> varnames    : layers_of_interest 
-#>               layers_of_interest 
-#>               layers_of_interest 
+#> varnames    : layers_of_interest
+#>               layers_of_interest
+#>               layers_of_interest
+#>               layers_of_interest
+#>               layers_of_interest
 #>               ...
-#> names       : bio5, bio6, bio7, bio13, bio14, bio15 
-#> min values  :  NaN,  NaN,  NaN,   NaN,   NaN,     1 
-#> max values  :  NaN,  NaN,  NaN,   NaN,   NaN,     1 
+#> names       : bio5, bio6, bio7, bio13, bio14, bio15
+#> min values  :  NaN,  NaN,  NaN,   NaN,   NaN,     1
+#> max values  :  NaN,  NaN,  NaN,   NaN,   NaN,     1
 #> 
 #> towards_high_end:
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 39, 36, 6  (nrow, ncol, nlyr)
 #> resolution  : 0.1666667, 0.1666667  (x, y)
 #> extent      : -81.16667, -75.16667, -5, 1.5  (xmin, xmax, ymin, ymax)
-#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization) 
+#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization)
 #> source(s)   : memory
-#> varnames    : layers_of_interest 
-#>               layers_of_interest 
-#>               layers_of_interest 
+#> varnames    : layers_of_interest
+#>               layers_of_interest
+#>               layers_of_interest
+#>               layers_of_interest
+#>               layers_of_interest
 #>               ...
-#> names       : bio5, bio6, bio7, bio13, bio14, bio15 
-#> min values  :    1,    1,    1,     1,     1,   NaN 
-#> max values  :    1,    1,    1,     1,     1,   NaN 
+#> names       : bio5, bio6, bio7, bio13, bio14, bio15
+#> min values  :    1,    1,    1,     1,     1,   NaN
+#> max values  :    1,    1,    1,     1,     1,   NaN
 #> 
 #> towards_low_combined:
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 39, 36, 1  (nrow, ncol, nlyr)
 #> resolution  : 0.1666667, 0.1666667  (x, y)
 #> extent      : -81.16667, -75.16667, -5, 1.5  (xmin, xmax, ymin, ymax)
-#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization) 
+#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization)
 #> source(s)   : memory
-#> varname     : layers_of_interest 
-#> categories  : category 
-#> name        : category 
-#> min value   :    bio15 
-#> max value   :    bio15 
+#> varname     : layers_of_interest
+#> categories  : category
+#> name        : category
+#> min value   :    bio15
+#> max value   :    bio15
 #> 
 #> towards_high_combined:
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 39, 36, 1  (nrow, ncol, nlyr)
 #> resolution  : 0.1666667, 0.1666667  (x, y)
 #> extent      : -81.16667, -75.16667, -5, 1.5  (xmin, xmax, ymin, ymax)
-#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization) 
+#> coord. ref. : lon/lat WGS 84 (with axis order normalized for visualization)
 #> source(s)   : memory
-#> varname     : layers_of_interest 
-#> categories  : category 
-#> name        : category 
-#> min value   :     bio5 
+#> varname     : layers_of_interest
+#> categories  : category
+#> name        : category
+#> min value   :     bio5
 #> max value   :    bio14
 ```
 
